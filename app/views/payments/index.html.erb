@@ -5,6 +5,7 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
+    	<th>Название</th>
       <th>Ежемесячный по долгу</th>
       <th>Ежемесячный по %</th>
       <th>Общий ежемесяченый</th>
@@ -23,9 +24,9 @@
     <% @payments.each do |payment| %>
       <tr>
         <td><%= payment.borrower.name %></td>
-        <td><%= payment.loan %></td>
-        <td><%= payment.period %></td>
-        <td><%= payment.annual_rate %></td>
+        <td><%= payment.monthly_debt_payment %></td>
+        <td><%= payment.monthly_percent_payment %></td>
+        <td><%= payment.monthly_total_payment %></td>
         <td><%= payment.overdue_rate %></td>
         <td><%= link_to 'Детализация', payment %></td>
         <td><%= link_to 'Изменить данные', edit_borrower_path(payment) %></td>
