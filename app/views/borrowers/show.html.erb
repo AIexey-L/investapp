@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Детализация по заемщику
+	<%= @borrower.name %>
+</h1>	
+<br>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Сумма займа</th>
+      <th>Срок займа</th>
+      <th>Ставка годовых</th>
+      <th>Ставка при просрочке</th>
+      <th colspan="3"></th>
+    </tr>
+    <tr>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @borrower.name %></td>
+      <td><%= @borrower.loan %></td>
+      <td><%= @borrower.period %></td>
+      <td><%= @borrower.annual_rate %></td>
+      <td><%= @borrower.overdue_rate %></td>
+      <td class="table-active"><%= link_to 'Изменить данные', edit_borrower_path(@borrower) %></td>
+      <td class="table-danger"><%= link_to 'Удалить', @borrower, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться к заемщикам', borrowers_path %></button>
+
