@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Платежи</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Ежемесячный по долгу</th>
+      <th>Ежемесячный по %</th>
+      <th>Общий ежемесяченый</th>
+      <th>Общая сумма выплаты</th>
+      <th>Выплачено по %</th>
+      <th>Выплачено по долгу</th>
+      <th>Доходность годовых</th>
+      <th colspan="3"></th>
+    </tr>
+    <tr>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.borrower.name %></td>
+        <td><%= payment.loan %></td>
+        <td><%= payment.period %></td>
+        <td><%= payment.annual_rate %></td>
+        <td><%= payment.overdue_rate %></td>
+        <td><%= link_to 'Детализация', payment %></td>
+        <td><%= link_to 'Изменить данные', edit_borrower_path(payment) %></td>
+        <td><%= link_to 'Удалить', payment, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить нового заемщика', new_borrower_path %>

@@ -1,4 +1,4 @@
-class BorrowerController < ApplicationController
+class BorrowersController < ApplicationController
   before_action :set_borrower, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -50,7 +50,7 @@ class BorrowerController < ApplicationController
     end
 
     def borrower_params
-      params.require(:borrower).permit(:title)
+      params.require(:borrower).permit(:name, :loan, :period, :annual_rate, :overdue_rate)
     end
 
 end
