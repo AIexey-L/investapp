@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Детализация по заемщику
+<h1>Детализация по заемщику: 
 	<%= @borrower.name %>
 </h1>	
 <br>
@@ -8,12 +8,11 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Название</th>
-      <th>Сумма займа</th>
-      <th>Срок займа</th>
-      <th>Ставка годовых</th>
-      <th>Ставка при просрочке</th>
-      <th colspan="3"></th>
+      <th>Сумма займа, руб</th>
+      <th>Срок займа, мес</th>
+      <th>Ставка годовых, %</th>
+      <th>Ставка при просрочке, %</th>
+      <th colspan="2"></th>
     </tr>
     <tr>
       
@@ -22,7 +21,6 @@
 
   <tbody>
     <tr>
-      <td><%= @borrower.name %></td>
       <td><%= @borrower.loan %></td>
       <td><%= @borrower.period %></td>
       <td><%= @borrower.annual_rate %></td>
@@ -32,6 +30,38 @@
     </tr>
   </tbody>
 </table>
+<br><br>
 
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться к заемщикам', borrowers_path %></button>	
+<h3>Общая информация о платежах</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Ежемесячный по долгу, руб</th>
+      <th>Ежемесячный по %, руб</th>
+      <th>Общий ежемесяченый, руб</th>
+      <th>Общая сумма выплат, руб</th>
+      <th>Выплачено по %, руб</th>
+      <th>Выплачено по долгу, руб</th>
+      <th>Доходность годовых, %</th>
+      <th colspan="1"></th>
+   </tr>
+
+    <tbody>
+      <tr>
+        <td><%= @borrower.monthly_debt_payment(@borrower) %></td>
+        <td><%= @borrower.monthly_percent_payment(@borrower) %></td>
+        <td><%= @borrower.monthly_total_payment(@borrower) %></td>
+        <td><%= @borrower.total_payment(@borrower) %>
+        <td>Выплачено по %</td>
+        <td>Выплачено по долгу</td>
+        <td>Доходность годовых</td>
+        <td class="table-active"><%= link_to 'Помесячная детализация и редактирование платежей', borrower_payments_path(@borrower.id) %></td>
+      </tr>
+    </tbody>
+  
+</table>
+
+<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться к списку заемщиков', borrowers_path %></button>	
+<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться на главную страницу', root_path %></button> 
 
