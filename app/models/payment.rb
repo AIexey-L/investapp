@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  validates :name, :loan, :period, :annual_rate, :overdue_rate, presence: true
+  validates :month, :borrower_id, :payment, presence: true
   belongs_to :borrower
 
 end

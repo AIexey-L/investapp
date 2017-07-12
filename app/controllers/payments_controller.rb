@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    @payment = Payment.new
+    @payment = Payment.new(borrower_id: params[:borrower_id])
   end
 
   def edit
@@ -18,9 +18,10 @@ class PaymentsController < ApplicationController
 
   def create
      @payment = Payment.new(payment_params)
+     @payment.borrower_id = params[:borrower_id]
      respond_to do |format|
        if @payment.save
-         format.html { redirect_to @payment, notice: 'Платеж успешно создан' }
+         format.html { redirect_to borrower_payments_path, notice: 'Платеж успешно создан' }
        else
          format.html { render :new }
        end
@@ -40,7 +41,7 @@ class PaymentsController < ApplicationController
   def destroy
     @payment.destroy
     respond_to do |format|
-      format.html { redirect_to payments_url, notice: 'Платеж успешно удален' }
+      format.html { redirect_to borrower_payments_url, notice: 'Платеж успешно удален' }
     end
   end
 

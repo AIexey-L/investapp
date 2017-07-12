@@ -1,3 +1,4 @@
+<div class="col-lg-6">
 <p id="notice"><%= notice %></p>
 
 <h1>Платежи заемщика:
@@ -10,16 +11,19 @@
   <thead>
 	  <tr>
 	    <th>Месяц</th>
-	    <th>Сумма</th>
-	    <th colspan="1"></th>
-	 </tr>
-
+	    <th>Сумма, руб</th>
+	    <th colspan="2"></th>
+	  </tr>
+	 </thead>
 	  <tbody>
 	  	<tr>
 	  	<% @payments.each do |payment| %>
 		    <td><%= payment.month %></td>
 		    <td><%= payment.payment %></td>
-		    <td class="table-active"><%= link_to 'Редактирование платежа', borrower_payment_path(id: payment.id) %></td>
+		    <td class="table-active"><%= link_to 'Изменить', edit_borrower_payment_path(id: payment.id) %></td>
+		    <td class="table-danger">
+		    <%= link_to 'Удалить', borrower_payment_path(id: payment.id), method: :delete, data: { confirm: 'Вы уверены?' } %>
+		    </td>
 	    </tr>
 	    <% end %>
 	  </tbody>
@@ -29,3 +33,4 @@
 <br>
 
 <button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Добавить новый платеж', new_borrower_payment_path %></button>
+</div>
