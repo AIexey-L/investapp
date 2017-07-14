@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710074648) do
+ActiveRecord::Schema.define(version: 20170713042410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "borrowers", force: :cascade do |t|
     t.string "name"
-    t.integer "loan"
+    t.float "loan"
     t.integer "period"
-    t.integer "annual_rate"
-    t.integer "overdue_rate"
+    t.float "annual_rate"
+    t.float "overdue_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170710074648) do
   create_table "payments", force: :cascade do |t|
     t.integer "borrower_id"
     t.integer "month"
-    t.integer "payment"
+    t.float "payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,12 +10,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-lg-6">
+  <div class="col-lg-8">
     <%= f.text_field :name, label: 'Название заемщика'%>
-    <%= f.number_field :loan, label: 'Сумма займа'%>
+    <%= f.number_field :loan, label: 'Сумма займа', class: :text_field, step: :any%>
     <%= f.number_field :period, label: 'Срок займа' %>
-    <%= f.number_field :annual_rate, label: 'Процентная ставка (годовая)' %>
-    <%= f.number_field :overdue_rate, label: 'Процентная ставка при просрочке' %>
+    <%= f.number_field :annual_rate, label: 'Процентная ставка (годовая)', class: :text_field, step: :any %>
+    <%= f.number_field :overdue_rate, label: 'Процентная ставка при просрочке', class: :text_field, step: :any %>
 
     <%= f.primary 'Сохранить'%>
   </div>

@@ -1,0 +1,10 @@
+<h1 class="display-4 col-lg-8">Введите данные:</h1>
+<br>
+
+<%= bootstrap_form_for @calc, as: :post, method: :post, url: investor_index_url do |f| %>
+  <div class="col-lg-8">
+    <%= f.number_field :investment_amount, label: 'Сумма инвестиции, руб', class: :text_field, step: :any%>
+    <%= f.number_field :invest_period, label: 'Срок инвестиции, мес' %>
+    <%= f.primary 'Расчитать'%>
+  </div>
+<% end %>

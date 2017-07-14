@@ -1,1 +1,19 @@
-<h1>edit</h1>
+<div class="col-lg-8">
+<h1 class="display-4">Редактировать платеж</h1>
+<br>
+	<%= bootstrap_form_for @payment, url: { action: 'update' } do |f| %>
+	  <% if @payment.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this borrower from being saved:</h2>
+	      <ul>
+	      <% @payment.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	    <%= f.text_field :month, label: 'Месяц'%>
+	    <%= f.number_field :payment, label: 'Платеж, руб', class: :text_field, step: :any%>
+	    <%= f.primary 'Сохранить'%>
+	<% end %>
+</div>

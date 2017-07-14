@@ -1,19 +1,21 @@
-<h1 class="col-lg-6">Добавить нового заемщика</h1>
-<%= bootstrap_form_for @payment, url: { action: 'create' } do |f| %>
-  <% if @payment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %>prohibited this borrower from being saved:</h2>
+<div class="col-lg-6">
 
-      <ul>
-      <% @payment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="col-lg-6">
-    <%= f.text_field :month, label: 'Месяц'%>
-    <%= f.number_field :payment, label: 'Платеж, руб'%>
-    <%= f.primary 'Сохранить'%>
-  </div>
-<% end %>
+<h1 class="display-4">Новый платеж заемщика <%= @borrower.name %></h1>
+
+	<br>
+	<%= bootstrap_form_for @payment, url: { action: 'create' } do |f| %>
+	  <% if @payment.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this borrower from being saved:</h2>
+	      <ul>
+	      <% @payment.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	    <%= f.text_field :month, label: 'Месяц' %>
+	    <%= f.number_field :payment, label: 'Платеж, руб', class: :text_field, step: :any %>
+	    <%= f.primary 'Сохранить'%>
+	<% end %>
+</div>

@@ -1,10 +1,9 @@
-<div class="col-lg-6">
+<div class="col-lg-7">
 <p id="notice"><%= notice %></p>
 
-<h1>Платежи заемщика:
+<h1 class="display-4">Платежи заемщика:
 <%= @borrower.name %>
-</h1>
-
+</h1> 
 <br>
 
 <table class="table table-bordered table-striped">
@@ -14,23 +13,25 @@
 	    <th>Сумма, руб</th>
 	    <th colspan="2"></th>
 	  </tr>
-	 </thead>
-	  <tbody>
+  </thead>
+  <tbody >
 	  	<tr>
 	  	<% @payments.each do |payment| %>
-		    <td><%= payment.month %></td>
-		    <td><%= payment.payment %></td>
-		    <td class="table-active"><%= link_to 'Изменить', edit_borrower_payment_path(id: payment.id) %></td>
-		    <td class="table-danger">
-		    <%= link_to 'Удалить', borrower_payment_path(id: payment.id), method: :delete, data: { confirm: 'Вы уверены?' } %>
-		    </td>
+		    <td class="text-center align-middle"><%= payment.month %></td>
+		    <td class="text-center align-middle"><%= payment.payment %></td>
+		    <td class="text-center align-middle"><div class="btn"><%= link_to 'Изменить', edit_borrower_payment_path(id: payment.id), :class => "btn btn-outline-primary btn-sm" %></div></td>
+        <td class="text-center align-middle"><div class="btn"><%= link_to 'Удалить', borrower_payment_path(id: payment.id), method: :delete, data: { confirm: 'Вы уверены?' }, :class => "btn btn-danger btn-sm" %></div></td>
 	    </tr>
 	    <% end %>
-	  </tbody>
+  </tbody>
   
 </table>
 
 <br>
-
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Добавить новый платеж', new_borrower_payment_path %></button>
+<div class="btn col-lg-12">
+        <%= link_to 'Добавить новый платеж', new_borrower_payment_path, :class => "btn btn-lg btn-outline-success col-lg-12" %>
+</div>
+<div class="btn col-lg-12">
+        <%= link_to 'Вернуться к детализации', @borrower, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+</div>
 </div>

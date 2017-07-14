@@ -5,7 +5,8 @@ class BorrowersController < ApplicationController
     @borrowers = Borrower.all
   end
 
-  def show    
+  def show
+    @stats = CalculateBorrowerStats.new(params)
   end
 
   def new

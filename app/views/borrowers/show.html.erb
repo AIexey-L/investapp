@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Детализация по заемщику: 
-	<%= @borrower.name %>
-</h1>	
+<h1 class="display-4">Детализация по заемщику: 
+<%= @borrower.name %>
+</h1> 
 <br>
 
 <table class="table table-bordered table-striped">
@@ -21,47 +21,49 @@
 
   <tbody>
     <tr>
-      <td><%= @borrower.loan %></td>
-      <td><%= @borrower.period %></td>
-      <td><%= @borrower.annual_rate %></td>
-      <td><%= @borrower.overdue_rate %></td>
-      <td class="table-active"><%= link_to 'Изменить данные', edit_borrower_path(@borrower) %></td>
-      <td class="table-danger"><%= link_to 'Удалить', @borrower, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      <td class="text-center align-middle"><%= @borrower.loan %></td>
+      <td class="text-center align-middle"><%= @borrower.period %></td>
+      <td class="text-center align-middle"><%= @borrower.annual_rate %></td>
+      <td class="text-center align-middle"><%= @borrower.overdue_rate %></td>
+      <td class="text-center align-middle"><div class="btn"><%= link_to 'Изменить данные', edit_borrower_path(@borrower), :class => "btn btn-outline-primary btn-sm" %></div></td>
+      <td class="text-center align-middle"><div class="btn"><%= link_to 'Удалить заемщика', @borrower, method: :delete, data: { confirm: 'Вы уверены?' }, :class => "btn btn-danger btn-sm" %></div></td>
     </tr>
   </tbody>
 </table>
-<br><br>
+<br>
 
-<h3>Общая информация о платежах</h3>
+<h5>Количество платежей - <%= @borrower.payments.count %></h5>
+<br>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Ежемесячный по долгу, руб</th>
-      <th>Ежемесячный по %, руб</th>
-      <th>Общий ежемесяченый, руб</th>
-      <th>Общая сумма выплат, руб</th>
-      <th>Выплачено по %, руб</th>
-      <th>Выплачено по долгу, руб</th>
-      <th>Доходность годовых, %</th>
-      <th colspan="1"></th>
+      <th>Ежемесячный платеж по долгу, руб</th>
+      <th>Ежемесячный платеж по %, руб</th>
+      <th>Общий ежемесяченый платеж, руб</th>
+      <th>Общая запланированная сумма выплат, руб</th>
+      <th>Выплачено фактичкски по %, руб</th>
+      <th>Выплачено фактически по долгу, руб</th>
+      <th>Доходность годовых фактическая, %</th>
    </tr>
 
     <tbody>
       <tr>
-        <td><%= @borrower.monthly_debt_payment(@borrower) %></td>
-        <td><%= @borrower.monthly_percent_payment(@borrower) %></td>
-        <td><%= @borrower.monthly_total_payment(@borrower) %></td>
-        <td><%= @borrower.total_payment(@borrower) %>
-        <td>Выплачено по %</td>
-        <td>Выплачено по долгу</td>
-        <td>Доходность годовых</td>
-        <td class="table-active"><%= link_to 'Помесячная детализация и редактирование платежей', borrower_payments_path(@borrower.id) %></td>
-      </tr>
+        <td class="text-center align-middle"><%= @stats.monthly_debt_payment %></td>
+        <td class="text-center align-middle"><%= @stats.monthly_percent_payment %></td>
+        <td class="text-center align-middle"><%= @stats.monthly_total_payment %></td>
+        <td class="text-center align-middle"><%= @stats.total_payment %>
+        <td class="text-center align-middle"><%= @stats.percent_paid %></td>
+        <td class="text-center align-middle"><%= @stats.debt_payed %></td>
+        <td class="text-center align-middle"><%= @stats.profit_percent %></td>
     </tbody>
   
 </table>
+<br>
 
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться к списку заемщиков', borrowers_path %></button>	
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться на главную страницу', root_path %></button> 
-
+<div class="btn col-lg-12">
+        <%= link_to 'Платежи помесячно, редактирование платежей', borrower_payments_path(@borrower.id), :class => "btn btn-lg btn-outline-success col-lg-12" %>
+</div>
+<div class="btn col-lg-12">
+        <%= link_to 'Вернуться к списку заемщиков', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+</div>

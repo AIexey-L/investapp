@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1 >Заемщики</h1>
+<h1 class="display-4">Заемщики</h1>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Название</th>
-      <th>Сумма займа</th>
-      <th>Срок займа</th>
-      <th>Ставка годовых</th>
-      <th>Ставка при просрочке</th>
+      <th>Сумма займа, руб</th>
+      <th>Срок займа, руб</th>
+      <th>Ставка годовых, %</th>
+      <th>Ставка при просрочке, %</th>
       <th colspan="1"></th>
     </tr>
     <br>
@@ -18,18 +18,21 @@
   <tbody>
     <% @borrowers.each do |borrower| %>
       <tr>
-        <td><%= borrower.name %></td>
-        <td><%= borrower.loan %></td>
-        <td><%= borrower.period %></td>
-        <td><%= borrower.annual_rate %></td>
-        <td><%= borrower.overdue_rate %></td>
-        <td class="table-active"><%= link_to 'Платежи, детализация, изменение данных', borrower %></td>
+        <td class="text-center align-middle"><%= borrower.name %></td>
+        <td class="text-center align-middle"><%= borrower.loan %></td>
+        <td class="text-center align-middle"><%= borrower.period %></td>
+        <td class="text-center align-middle"><%= borrower.annual_rate %></td>
+        <td class="text-center align-middle"><%= borrower.overdue_rate %></td>
+        <td class="text-center align-middle"><div class="btn"><%= link_to 'Платежи, детализация, изменение данных', borrower, :class => "btn btn-outline-primary" %></div></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br><br>
-
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Добавить нового заемщика', new_borrower_path %></button>
-<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to 'Вернуться на главную страницу', root_path %></button> 
+<div class="btn col-lg-12">
+        <%= link_to 'Добавить нового заемщика', new_borrower_path, :class => "btn btn-lg btn-outline-success col-lg-12" %>
+</div>
+<div class="btn col-lg-12">
+        <%= link_to 'Вернуться на главную страницу', root_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+</div>

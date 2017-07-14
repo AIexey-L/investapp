@@ -1,30 +1,50 @@
-<p id="notice"><%= notice %></p>
-
-	<div class="col-lg-12">
-	  <div class="panel panel-default">
-	    <div class="panel-body">
-	      <h1 class="text-center">Кредитный калькулятор</h1>
-	    </div>
-	  </div>
-	</div>
+<div class="jumbotron">
+  <div class="container">
+	<h1 class="display-3 text-center">Калькулятор инвестиций</h1>
+<br>
+	<div class="row col-lg-12">
+		<div class="col text-center">
+		<p class="col-lg-12 text-left">Здравствуйте, меня зовут Алексей Лопатин. Это демонстрационное приложение - результат выполнения тестового задания. Исходный код вы можете найти в моем Github по ссылке ниже: </p>
+		<button type="button" class="btn btn-link" onclick="location.href = 'https://github.com/AIexey-L/investapp';">https://github.com/AIexey-L/investapp</button>
+		
+		</div>
+	</div>	
+    
+	<br>
+	<br>
 
 	<div class="row col-lg-12">
 		<div class="col text-center">
-		  <button type="button" class="btn btn-outline-primary btn-lg">информация для инвестора</button>
+		<p class="col-lg-12 text-left">Описание задания, ссылка на файл с историческими данными и расчетами.</p>
+		  <div class="btn col-lg-12">
+		  <%= link_to 'Перейти к описанию задания', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+		 </div>
 		</div>
-
 	  <div class="col text-center">
-	    <button type="button" class="btn btn-outline-primary btn-lg">информация для заемщика</button>
+	  <p class="col-lg-12 text-left">Пояснения и уточнения, ответы на вопросы задания, пояснения по условиям.</p>
+	    <div class="btn col-lg-12">
+		  <%= link_to 'Перейти к комметариям по реализации', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+		 </div>
 	  </div>
 	</div>	
 
-	<div class="col-lg-12">
-		<h3 class="text-center">Целевая(идеальная) ставка</h2>
-	</div>
+ <br><br><br>
+	<div class="row col-lg-12">
+		<div class="col text-center">
+		<p class="col-lg-12 text-left">Расчет инвестиций для одного инвестора, с использованием исторических данных заемщиков, расчетом ожидаемой и фактической доходности.</p>
+		<div class="btn col-lg-12">
+		  <%= link_to 'Перейти к расчету инвестиций', investor_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+		 </div>
+		</div>
+	  <div class="col text-center">
+	  <p class="col-lg-12 text-left">Исторические данные заемщиков: создание, редактирование, производные расчеты по выплатам и доходности. </p>
+	    <div class="btn col-lg-12">
+	      <%= link_to 'Перейти к информации о заемщиках', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+	    </div>
+	  </div>
+	</div>	
 
-	<div class="col-lg-12">
-		<h3 class="text-center">Текущая ставка</h2>
-	</div>
-
+  </div>
+</div>
 
 
