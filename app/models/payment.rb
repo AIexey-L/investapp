@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  validates :month, :borrower_id, :payment, presence: true
+  validates :borrower_id, :payment, presence: true
+  validates :month, presence: true, uniqueness: { scope: :borrower_id }
   belongs_to :borrower
-
 end

@@ -1,14 +1,13 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:edit, :update, :destroy]
+  before_action :set_borrower, only: [:index, :new, :create]
 
   def index
     @payments = Payment.where(borrower_id: params[:borrower_id])
-    @borrower = Borrower.find(params[:borrower_id])
   end
 
   def new
     @payment = Payment.new(borrower_id: params[:borrower_id])
-    @borrower = Borrower.find(params[:borrower_id])
   end
 
   def edit
@@ -47,6 +46,10 @@ class PaymentsController < ApplicationController
 
   def set_payment
     @payment = Payment.find(params[:id])
+  end
+
+  def set_borrower
+    @borrower = Borrower.find(params[:borrower_id])
   end
 
   def payment_params
