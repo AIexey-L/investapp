@@ -7,4 +7,3 @@ Rails.application.routes.draw do
   get '/investor/show' => 'investor#show'
   resources :investor, only: 'create'
 end
-

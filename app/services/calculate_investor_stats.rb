@@ -16,12 +16,13 @@ class CalculateInvestorStats
   end
 
   def total_real_profit_percent
-    borrower_ids = Borrower.all.map { |borrower| borrower.id }
+    calc = CalculateBorrowerStats.new
+    borrower_ids = Borrower.pluck(:id)
     borrower_ids.each do |id|
       @sum_profit ||= 0
       @sum_debt ||= 0
-      @sum_profit += CalculateBorrowerStats.new(id: id).percent_paid
-      @sum_debt += CalculateBorrowerStats.new(id: id).debt_payed
+      @sum_profit += calc.call(id)[:percent_paid]
+      @sum_debt += calc.call(id)[:debt_payed]
     end
     (@sum_profit / @sum_debt / 6 * 12 * 100).round(2)
   end

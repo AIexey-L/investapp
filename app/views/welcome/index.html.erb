@@ -5,8 +5,9 @@
 	<div class="row col-lg-12">
 		<div class="col text-center">
 		<p class="col-lg-12 text-left">Здравствуйте, меня зовут Алексей Лопатин. Я написал это демонстрационное приложение для тестового задания. Приложение впервые задеплоено на сервер 14.07.2017, первый коммит - 07.07.2017. Исходный код вы можете найти в моем Github по ссылке ниже: </p>
-		<button type="button" class="btn btn-link" onclick="location.href = 'https://github.com/AIexey-L/investapp';">https://github.com/AIexey-L/investapp</button>
-		
+		<div class="btn col-lg-6 ">
+		  <%= link_to 'Посмотреть исходный код', 'https://github.com/AIexey-L/investapp', :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+		 </div>
 		</div>
 	</div>	
     
@@ -17,12 +18,12 @@
 		<div class="col text-center">
 		<p class="col-lg-12 text-left">Описание задания, ссылка на файл с историческими данными и расчетами.</p>
 		  <div class="btn col-lg-12">
-		  <%= link_to 'Перейти к описанию задания', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
+		  <%= link_to 'Перейти к описанию задания', 'https://github.com/AIexey-L/investapp/tree/master/TASK', :class => "btn btn-lg btn-outline-primary col-lg-12" %>
 		 </div>
 		</div>
 	  <div class="col text-center">
 	  <p class="col-lg-12 text-left">Пояснения и уточнения, ответы на вопросы задания, пояснения по условиям.</p>
-	    <div class="btn col-lg-12">
+	    <div class="btn col-lg-12" >
 		  <%= link_to 'Перейти к комметариям по реализации', borrowers_path, :class => "btn btn-lg btn-outline-primary col-lg-12" %>
 		 </div>
 	  </div>

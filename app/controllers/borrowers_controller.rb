@@ -6,7 +6,7 @@ class BorrowersController < ApplicationController
   end
 
   def show
-    @stats = CalculateBorrowerStats.new(params)
+    @stats = CalculateBorrowerStats.new.call(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class BorrowersController < ApplicationController
   def edit
   end
 
- def create
+  def create
     @borrower = Borrower.new(borrower_params)
 
     respond_to do |format|
@@ -46,12 +46,12 @@ class BorrowersController < ApplicationController
   end
 
   private
-    def set_borrower
-      @borrower = Borrower.find(params[:id])
-    end
 
-    def borrower_params
-      params.require(:borrower).permit(:name, :loan, :period, :annual_rate, :overdue_rate)
-    end
+  def set_borrower
+    @borrower = Borrower.find(params[:id])
+  end
 
+  def borrower_params
+    params.require(:borrower).permit(:name, :loan, :period, :annual_rate, :overdue_rate)
+  end
 end

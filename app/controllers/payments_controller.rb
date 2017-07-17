@@ -15,16 +15,16 @@ class PaymentsController < ApplicationController
   end
 
   def create
-     @payment = Payment.new(payment_params)
-     @payment.borrower_id = params[:borrower_id]
-     respond_to do |format|
-       if @payment.save
-         format.html { redirect_to borrower_payments_path, notice: 'Платеж успешно создан' }
-       else
-         format.html { render :new }
-       end
-     end
-   end
+    @payment = Payment.new(payment_params)
+    @payment.borrower_id = params[:borrower_id]
+    respond_to do |format|
+      if @payment.save
+        format.html { redirect_to borrower_payments_path, notice: 'Платеж успешно создан' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
 
   def update
     respond_to do |format|
@@ -52,5 +52,4 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:payment).permit(:id, :borrower_id, :month, :payment)
   end
-
 end

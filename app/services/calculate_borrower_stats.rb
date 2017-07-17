@@ -1,16 +1,27 @@
 class CalculateBorrowerStats
-  def initialize(params)
-    @borrower = Borrower.find(params[:id])
-    @payments = Payment.where(borrower_id: (params[:id]))
-    @payments_sum = Payment.where(borrower_id: (params[:id])).sum(:payment)
+  attr_reader :result
+  
+  def call(id)
+    @borrower = Borrower.find(id)
+    @payments = Payment.where(borrower_id: id)
+    @payments_sum = @payments.sum(:payment)
+    @result = { monthly_debt_payment: monthly_debt_payment,
+                monthly_percent_payment: monthly_percent_payment,
+                monthly_total_payment: monthly_total_payment,
+                total_payment: total_payment,
+                percent_paid: percent_paid,
+                debt_payed: debt_payed,
+                profit_percent: profit_percent }
   end
+
+  private
 
   def monthly_debt_payment
     (@borrower.loan / @borrower.period).round(2)
   end
 
   def monthly_percent_payment
-    (((@borrower.loan * @borrower.annual_rate / 100) / 12).round(2))
+    ((@borrower.loan * @borrower.annual_rate / 100) / 12).round(2)
   end
 
   def monthly_total_payment
