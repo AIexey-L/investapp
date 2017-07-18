@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Borrower', type: :model do
   it 'is a valid factory' do
-    expect(FactoryGirl.build(:borrower)).to be_valid
+    expect(build(:borrower)).to be_valid
   end
   
   it 'is valid with name, loan, period, annual_rate, overdue_rate' do
