@@ -17,31 +17,31 @@ describe 'Borrower', type: :model do
   end
 
   it 'is invalid without name' do
-    borrower = Borrower.new(name: nil)
+    borrower = build(:borrower, name: nil)
     borrower.valid?
     expect(borrower.errors[:name]).to include("can't be blank")
   end
 
   it 'is invalid without loan' do
-    borrower = Borrower.new(loan: nil)
+    borrower = build(:borrower, loan: nil)
     borrower.valid?
     expect(borrower.errors[:loan]).to include("can't be blank")
   end
 
   it 'is invalid without period' do
-    borrower = Borrower.new(period: nil)
+    borrower = build(:borrower, period: nil)
     borrower.valid?
     expect(borrower.errors[:period]).to include("can't be blank")
   end
 
   it 'is invalid without annual_rate' do
-    borrower = Borrower.new(annual_rate: nil)
+    borrower = build(:borrower, annual_rate: nil)
     borrower.valid?
     expect(borrower.errors[:annual_rate]).to include("can't be blank")
   end
 
   it 'is invalid without overdue_rate' do
-    borrower = Borrower.new(overdue_rate: nil)
+    borrower = build(:borrower, overdue_rate: nil)
     borrower.valid?
     expect(borrower.errors[:overdue_rate]).to include("can't be blank")
   end

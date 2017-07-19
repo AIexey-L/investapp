@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
